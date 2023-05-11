@@ -4,20 +4,11 @@ class Solution(object):
         right = 1
         pro = 0
         while right < len(prices):
-            x = prices[left]
-            y = prices[right]
-            if x >= y:
-                left += 1
-                right += 1
-            elif y > x:
-                while y > x:
-                    pro = max(pro, y-x)
-                    right = right + 1
-                    if right == len(prices):
-                        break
-                    y = prices[right]
+            if prices[left] > prices[right]:
                 left = right
-                right += 1
+            else:
+                pro = max(pro, prices[right]-prices[left])
+            right = right + 1
         return pro
                 
             
