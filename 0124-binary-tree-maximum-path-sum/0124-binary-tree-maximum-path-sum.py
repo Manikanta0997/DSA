@@ -14,10 +14,9 @@ class Solution(object):
             else:
                 left_max = dfs(root.left)
                 right_max = dfs(root.right)
-                left_max = max(0, left_max)
-                right_max = max(0, right_max)
-                res[0] = max(res[0], left_max+right_max + root.val)
-                return root.val + max(right_max, left_max)
+                left_max = max(left_max, 0)
+                right_max = max(right_max, 0)
+                res[0] = max(res[0], root.val+left_max+right_max)
+                return root.val + max(left_max, right_max)
         dfs(root)
         return res[0]
-                
