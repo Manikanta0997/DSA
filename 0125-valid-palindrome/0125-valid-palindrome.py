@@ -3,7 +3,7 @@ class Solution(object):
         str1 = ""
         s = s.lower()
         for i in range(len(s)):
-            if (ord(s[i:i+1]) >= 97 and ord(s[i:i+1]) <= 122) or (ord(s[i:i+1]) >= 48 and ord(s[i:i+1]) <= 57):
+            if s[i:i+1].isalnum():
                 str1 = str1 + s[i:i+1]
         n = len(str1)
         for i in range(len(str1) / 2):
