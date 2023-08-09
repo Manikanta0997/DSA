@@ -1,22 +1,20 @@
 class Solution(object):
     def longestConsecutive(self, nums):
-        occ = 0
-        if(len(nums) > 0):
-            x = dict()
-            for i in range(len(nums)):
-                x[nums[i]] = 1
-            for i in range(len(nums)):
-                oc = 0
-                if nums[i]-1 not in x:
-                    while nums[i] in x:
-                        oc = oc + 1
-                        nums[i] = nums[i] + 1
-                if occ < oc:
-                    occ = oc
-        return occ
-                        
+        di = {}
+        for i in range(len(nums)):
+            di[nums[i]] = 1
+        ma = 0
+        for i in range(len(nums)):
+            x = nums[i]
+            count = 1
+            if ((nums[i] - 1) not in di):
+                while x + 1 in di:
+                    count += 1
+                    x += 1
+            if count > ma:
+                ma = count
+        return ma
                     
-            
-            
-            
+                
+                
         
