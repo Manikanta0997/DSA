@@ -5,6 +5,8 @@ class Solution(object):
         for i in range(len(s)):
             if (ord(s[i:i+1]) >= 97 and ord(s[i:i+1]) <= 122) or (ord(s[i:i+1]) >= 48 and ord(s[i:i+1]) <= 57):
                 str1 = str1 + s[i:i+1]
-        str2 = str1[::-1]
-        if str1 == str2:
-            return True
+        n = len(str1)
+        for i in range(len(str1) / 2):
+            if str1[i:i+1] != str1[n-1-i:n-i]:
+                return False
+        return True
