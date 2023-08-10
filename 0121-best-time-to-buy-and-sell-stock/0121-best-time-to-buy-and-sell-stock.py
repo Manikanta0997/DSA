@@ -1,17 +1,16 @@
 class Solution(object):
     def maxProfit(self, prices):
-        left = 0
-        right = 1
-        pro = 0
-        while right < len(prices):
-            if prices[left] > prices[right]:
-                left = right
+        l = 0
+        r = 1
+        max1 = 0
+        while(r < len(prices) and l < len(prices)):
+            x = prices[r] - prices[l] 
+            if x > max1:
+                max1 = x
+            elif prices[l] > prices[r]:
+                l = r
+                r = r + 1
             else:
-                pro = max(pro, prices[right]-prices[left])
-            right = right + 1
-        return pro
-                
-            
-            
-            
+                r = r + 1
+        return max1
         
