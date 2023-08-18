@@ -14,6 +14,8 @@ class Solution(object):
     def isBalanced(self, root):
         if root == None:
             return True
+        if self.flag == 1:
+            return False
         self.isBalanced(root.left)
         if root.left != None and root.right != None:
             le = self.max_depth(root.left)
