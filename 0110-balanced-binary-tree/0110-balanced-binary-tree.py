@@ -27,10 +27,8 @@ class Solution(object):
         elif root.right == None:
             ri = 0
             le = self.max_depth(root.left)
-        print(root.val, le, ri)
         if abs(ri - le) > 1:
             self.flag = 1
-            return False
         self.isBalanced(root.right)
         if self.flag == 1:
             return False
