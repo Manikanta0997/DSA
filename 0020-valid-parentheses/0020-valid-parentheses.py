@@ -1,26 +1,28 @@
 class Solution(object):
     def isValid(self, s):
-        li = ['(', '[', '{']
-        lir = [')', ']','}']
-        stack = []
+        op = ['(', '[', '{']
+        cl = [')', ']', '}']
         top = 0
+        li = []
         for i in range(len(s)):
-            if s[i] in li:
-                if len(stack) <= top:
-                    stack.append(s[i])
+            if s[i:i+1] in op:
+                if top < len(li):
+                    li[top] = s[i:i+1]
+                    top += 1
                 else:
-                    stack[top] = s[i]
-                top = top + 1
-            if s[i] in lir:
-                if stack == [] or top == 0:
-                    top = 100
-                    break
-                x = stack[top-1]
-                x = li.index(x)
-                z = lir.index(s[i])
-                if x == z:
-                    top = top -1
+                    li.append(s[i:i+1])
+                    top += 1
+            else:
+                if top > 0:
+                    if cl.index(s[i:i+1]) == op.index(li[top-1]):
+                        top -= 1
+                    else:
+                        return False
                 else:
-                    break
+                    return False
         if top == 0:
             return True
+                    
+                
+            
+        
