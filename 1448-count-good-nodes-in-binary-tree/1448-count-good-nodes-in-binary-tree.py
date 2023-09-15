@@ -10,7 +10,7 @@ class Solution:
             if not root:
                 return 0
             res = 1 if root.val >= val else 0
-            val = max(root.val, val)
+            val = max(val, root.val)
             res += good(root.left, val)
             res += good(root.right, val)
             return res
